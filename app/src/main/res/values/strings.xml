@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Ayo Pintar</string>
+    <string name="app_mulai_text">Quiz App</string>
+    <string name="app_mulai_text1">Ayo mulai untuk belajar!</string>
+    <string name="app_mulai_text2">Platform pendidikan : Aplikasi quiz dengan memanfaatkan teknologi Kecerdasan Buatan.</string>
+    <string name="app_mulai_text3">Sudah memiliki akun? </string>
+    <string name="app_mulai_text4">Masuk</string>
+    <string name="app_mulai_button_text">Daftar sekarang</string>
+</resources>
