@@ -7,4 +7,22 @@
     <string name="app_mulai_text4">Masuk</string>
     <string name="app_mulai_button_text">Daftar sekarang</string>
     <string name="ilustrasi">Ilustrasi</string>
+
+
+    
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register">Register</string>
+    <string name="back_button">Back button</string>
+    <string name="daftar">Daftar</string>
+    <string name="lanjut">Lanjut</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="asal_sekolah">Asal Sekolah</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="auth_desc">Bergabung untuk mulai menjelajahi berbagai kuis dan dapatkan nilai terbaikmu disini!</string>
+    <string name="masuk">Masuk</string>
+    <string name="username">Username</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="lupa_pw"><u>Lupa Password?</u></string>
+    <string name="password">Password</string>
+
 </resources>
