@@ -15,4 +15,23 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="OutlinedBoxWithBorderRadius" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MyApp.TextInputLayout</item>
+        <item name="boxStrokeColor">@color/transparent</item>
+        <item name="boxBackgroundColor">#F3F3F3</item>
+        <item name="boxStrokeWidth">1dp</item>
+
+        <item name="hintTextAppearance">@style/TextAppearance.Material3.BodyMedium</item>
+        <item name="hintTextColor">#898989</item>
+
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.TextInputLayout" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+    <style name="Elevation.end.icon" parent="ThemeOverlay.Material3.Button.ElevatedButton">
+        <item name="iconGravity">end</item>
+    </style>
+
 </resources>
