@@ -9,7 +9,6 @@
     <string name="ilustrasi">Ilustrasi</string>
 
 
-    
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register">Register</string>
     <string name="back_button">Back button</string>
@@ -24,5 +23,9 @@
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="lupa_pw"><u>Lupa Password?</u></string>
     <string name="password">Password</string>
+    <string name="home">Home</string>
+    <string name="profesi">Profesi</string>
+    <string name="tips_belajar">Tips Belajar</string>
+    <string name="profile">Profile</string>
 
 </resources>
