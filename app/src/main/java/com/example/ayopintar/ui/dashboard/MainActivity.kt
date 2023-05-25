@@ -1,4 +1,4 @@
-package com.example.ayopintar.ui
+package com.example.ayopintar.ui.dashboard
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
