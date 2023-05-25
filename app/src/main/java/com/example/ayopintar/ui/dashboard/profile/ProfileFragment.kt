@@ -1,4 +1,4 @@
-package com.example.ayopintar.ui.profile
+package com.example.ayopintar.ui.dashboard.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

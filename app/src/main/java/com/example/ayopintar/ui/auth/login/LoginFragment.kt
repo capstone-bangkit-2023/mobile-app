@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.ayopintar.R
 import com.example.ayopintar.databinding.FragmentLoginBinding
-import com.example.ayopintar.ui.MainActivity
+import com.example.ayopintar.ui.dashboard.MainActivity
 
 
 class LoginFragment : Fragment() {

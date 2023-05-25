@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.ayopintar.ui.home.HomeFragment"
+        android:name="com.example.ayopintar.ui.dashboard.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_profesi"
-        android:name="com.example.ayopintar.ui.profesi.ProfesiFragment"
+        android:name="com.example.ayopintar.ui.dashboard.profesi.ProfesiFragment"
         android:label="fragment_profesi"
         tools:layout="@layout/fragment_profesi" />
     <fragment
         android:id="@+id/navigation_tips"
-        android:name="com.example.ayopintar.ui.tipsbelajar.TipsBelajarFragment"
+        android:name="com.example.ayopintar.ui.dashboard.tipsbelajar.TipsBelajarFragment"
         android:label="fragment_tips_belajar"
         tools:layout="@layout/fragment_tips_belajar" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.ayopintar.ui.profile.ProfileFragment"
+        android:name="com.example.ayopintar.ui.dashboard.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
