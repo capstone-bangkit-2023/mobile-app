@@ -27,5 +27,7 @@
     <string name="profesi">Profesi</string>
     <string name="tips_belajar">Tips Belajar</string>
     <string name="profile">Profile</string>
+    <string name="rekomendasi_profesi">Rekomendasi Profesi</string>
+    <string name="minat_profesi_desc">Berdasarkan minat mata pelajaran, maka rekomendasi profesi yang cocok denganmu adalah …</string>
 
 </resources>

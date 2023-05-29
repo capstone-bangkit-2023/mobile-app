@@ -21,6 +21,7 @@ class SplashScreenActivity : AppCompatActivity() {
             {
                 val intent = Intent(this@SplashScreenActivity, AuthActivity::class.java)
                 startActivity(intent)
+                finish()
             }, delay
         )
 
