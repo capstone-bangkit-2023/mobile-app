@@ -162,6 +162,8 @@
         app:icon="@drawable/baseline_arrow_forward_24"
         android:text="@string/lanjut"
         app:cornerRadius="24dp"
+        android:textColor="@color/white"
+        app:iconTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
