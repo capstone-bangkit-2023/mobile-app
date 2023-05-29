@@ -33,5 +33,12 @@
     <style name="Elevation.end.icon" parent="ThemeOverlay.Material3.Button.ElevatedButton">
         <item name="iconGravity">end</item>
     </style>
+    <style name="ButtonSolidPrimary" parent="ShapeAppearanceOverlay.Material3.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">24dp</item>
+    </style>
+
+
+
 
 </resources>
