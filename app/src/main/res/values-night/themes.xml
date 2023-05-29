@@ -15,4 +15,14 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="OutlinedBoxWithBorderRadius" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MyApp.TextInputLayout</item>
+
+        <item name="boxBackgroundColor">?attr/colorOnPrimary</item>
+        <item name="boxStrokeWidth">1dp</item>
+
+        <item name="hintTextAppearance">@style/TextAppearance.Material3.BodyMedium</item>
+        <item name="hintTextColor">#898989</item>
+
+    </style>
 </resources>
