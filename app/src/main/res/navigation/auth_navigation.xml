@@ -12,8 +12,8 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment2"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_registerFragment_to_nextRegisterFragment"
+            app:destination="@id/nextRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -34,6 +34,28 @@
             app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nextRegisterFragment"
+        android:name="com.example.ayopintar.ui.auth.register.NextRegisterFragment"
+        android:label="fragment_next_register"
+        tools:layout="@layout/fragment_next_register" >
+        <argument
+            android:name="nama_lengkap"
+            app:argType="string"
+            android:defaultValue="user_anonim" />
+        <argument
+            android:name="asal_sekolah"
+            app:argType="string"
+            android:defaultValue="myschool" />
+        <argument
+            android:name="no_hp"
+            app:argType="string"
+            android:defaultValue="0818181"
+            />
+        <action
+            android:id="@+id/action_nextRegisterFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
 
