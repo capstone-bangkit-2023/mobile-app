@@ -14,6 +14,7 @@ import com.example.ayopintar.utils.InputValidate.checkTextViewEmpty
 import com.example.ayopintar.utils.PasswordChecker.checkPasswordStrength
 import com.example.ayopintar.utils.PasswordChecker.checkSimilaritiesPassword
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 
 class NextRegisterFragment : Fragment() {
     private var _binding: FragmentNextRegisterBinding? = null
@@ -53,33 +54,43 @@ class NextRegisterFragment : Fragment() {
                 view.findNavController().navigate(R.id.action_nextRegisterFragment_to_loginFragment)
             }
         }
+        binding.edtUsername.editText?.addTextChangedListener {
+            val username = binding.edtUsername
+            val value = username.editText?.text.toString()
+            setError(username, value.isEmpty(), "Username tidak boleh kosong")
+        }
 
 
         binding.edtPasswordKonfirm.editText?.addTextChangedListener {
             val password1 = binding.edtPassword.editText?.text.toString()
             val password2 = binding.edtPasswordKonfirm.editText?.text.toString()
+            val message = "Konfirmasi password tidak sesuai"
+            setError(
+                binding.edtPasswordKonfirm,
+                !checkSimilaritiesPassword(password1, password2),
+                message
+            )
 
-            if (!checkSimilaritiesPassword(password1, password2)) {
-                binding.edtPasswordKonfirm.error = "Konfirmasi password tidak sesuai"
-                binding.edtPasswordKonfirm.errorIconDrawable = null
-                binding.btnDaftar.isEnabled = false
-            } else {
-                binding.edtPasswordKonfirm.error = null
-                binding.btnDaftar.isEnabled = true
-            }
         }
 
         binding.edtPassword.editText?.addTextChangedListener {
-                if (!checkPasswordStrength(it.toString())){
-                    binding.edtPassword.errorIconDrawable = null
-                    binding.edtPassword.error = getString(R.string.tooltips_password)
-                    binding.btnDaftar.isEnabled = false
-                }else{
-                        binding.edtPassword.error = null
-                    binding.btnDaftar.isEnabled = true
-                }
-            }
+            val message = getString(R.string.tooltips_password)
+            setError(binding.edtPassword, !checkPasswordStrength(it.toString()), message)
+        }
 
+
+    }
+
+    private fun setError(view: TextInputLayout, error: Boolean, message: String) {
+        if (error) {
+            view.errorIconDrawable = null
+            view.error = message
+            binding.btnDaftar.isEnabled = false
+
+        } else {
+            view.error = null
+            binding.btnDaftar.isEnabled = true
+        }
 
     }
 
