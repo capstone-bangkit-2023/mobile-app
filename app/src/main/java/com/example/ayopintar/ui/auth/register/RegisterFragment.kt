@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.ayopintar.databinding.FragmentRegisterBinding
+import com.example.ayopintar.utils.InputValidate.checkTextViewEmpty
 
 class RegisterFragment : Fragment() {
-private var _binding : FragmentRegisterBinding? = null
+    private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
 
@@ -29,6 +30,40 @@ private var _binding : FragmentRegisterBinding? = null
         binding.btnBack.setOnClickListener {
             it.findNavController().navigateUp()
         }
+
+
+
+
+
+        binding.btnNext.setOnClickListener {
+            val namaLengkap = binding.edtName.editText?.text.toString()
+            val asalSekolah = binding.edtAsalSekolah.editText?.text.toString()
+            val noHp = binding.edtNohp.editText?.text.toString()
+
+
+            if (checkTextViewEmpty(binding.edtName, "Nama Lengkap") &&
+                checkTextViewEmpty(binding.edtAsalSekolah, "Asal Sekolah") &&
+                checkTextViewEmpty(binding.edtNohp, "Nomor HP")) {
+                // Lanjutkan ke tindakan berikutnya jika semua TextView tidak kosong
+                val toNextRegisterFragment =
+                    RegisterFragmentDirections.actionRegisterFragmentToNextRegisterFragment()
+                toNextRegisterFragment.namaLengkap = namaLengkap
+                toNextRegisterFragment.noHp = noHp
+                toNextRegisterFragment.asalSekolah = asalSekolah
+                view.findNavController().navigate(toNextRegisterFragment)
+            }
+
+
+        }
+    }
+
+
+
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 
