@@ -7,6 +7,7 @@ object InputValidate {
         val text = textView.editText?.text.toString().trim()
         if (text.isEmpty()) {
             textView.error = "Field $fieldName tidak boleh kosong."
+            textView.errorIconDrawable = null
             return false
         }
         return true
