@@ -8,8 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.ayopintar.databinding.FragmentRegisterBinding
-import com.example.ayopintar.utils.InputValidate.checkEmpty
-import com.google.android.material.textfield.TextInputLayout
+import com.example.ayopintar.utils.InputValidate
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
@@ -43,11 +42,11 @@ class RegisterFragment : Fragment() {
             textInputLayout.errorIconDrawable = null
             textInputLayout.editText?.setOnFocusChangeListener { _, hasFocus ->
                 if (!hasFocus) {
-                    checkEmpty(textInputLayout, fieldName)
+                    InputValidate.checkEmpty(textInputLayout, fieldName)
                 }
             }
             textInputLayout.editText?.addTextChangedListener {
-                checkEmpty(textInputLayout, fieldName)
+                InputValidate.checkEmpty(textInputLayout, fieldName)
             }
         }
 
@@ -56,7 +55,7 @@ class RegisterFragment : Fragment() {
             val asalSekolah = binding.edtAsalSekolah.editText?.text.toString().trim()
             val noHp = binding.edtNohp.editText?.text.toString().trim()
 
-            if (checkTextViewsEmpty(textInputLayouts)) {
+            if (InputValidate.checkTextViewsEmpty(textInputLayouts)) {
                 // Lanjutkan ke tindakan berikutnya jika semua TextView tidak kosong
                 val toNextRegisterFragment = RegisterFragmentDirections.actionRegisterFragmentToNextRegisterFragment()
                 toNextRegisterFragment.namaLengkap = namaLengkap
@@ -67,7 +66,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun checkTextViewsEmpty(textInputLayouts: List<Pair<TextInputLayout, String>>): Boolean {
+    /*private fun checkTextViewsEmpty(textInputLayouts: List<Pair<TextInputLayout, String>>): Boolean {
         var allFieldsNotEmpty = true
 
         for ((textInputLayout, fieldName) in textInputLayouts) {
@@ -80,7 +79,7 @@ class RegisterFragment : Fragment() {
             }
         }
         return allFieldsNotEmpty
-    }
+    }*/
 
     override fun onDestroy() {
         super.onDestroy()
