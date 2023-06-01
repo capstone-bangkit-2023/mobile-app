@@ -8,6 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.ayopintar.databinding.FragmentRegisterBinding
+import com.example.ayopintar.utils.InputValidate.checkEmpty
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterFragment : Fragment() {
@@ -32,7 +33,6 @@ class RegisterFragment : Fragment() {
             it.findNavController().navigateUp()
         }
 
-
         val textInputLayouts = listOf(
             Pair(binding.edtName, "Nama Lengkap"),
             Pair(binding.edtAsalSekolah, "Asal Sekolah"),
@@ -40,6 +40,12 @@ class RegisterFragment : Fragment() {
         )
 
         textInputLayouts.forEach { (textInputLayout, fieldName) ->
+            textInputLayout.errorIconDrawable = null
+            textInputLayout.editText?.setOnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    checkEmpty(textInputLayout, fieldName)
+                }
+            }
             textInputLayout.editText?.addTextChangedListener {
                 checkEmpty(textInputLayout, fieldName)
             }
@@ -52,22 +58,12 @@ class RegisterFragment : Fragment() {
 
             if (checkTextViewsEmpty(textInputLayouts)) {
                 // Lanjutkan ke tindakan berikutnya jika semua TextView tidak kosong
-                val toNextRegisterFragment =
-                    RegisterFragmentDirections.actionRegisterFragmentToNextRegisterFragment()
+                val toNextRegisterFragment = RegisterFragmentDirections.actionRegisterFragmentToNextRegisterFragment()
                 toNextRegisterFragment.namaLengkap = namaLengkap
                 toNextRegisterFragment.noHp = noHp
                 toNextRegisterFragment.asalSekolah = asalSekolah
                 view.findNavController().navigate(toNextRegisterFragment)
             }
-        }
-    }
-
-    private fun checkEmpty(textInputLayout: TextInputLayout, fieldName: String) {
-        val text = textInputLayout.editText?.text.toString().trim()
-        if (text.isEmpty()) {
-            textInputLayout.error = "Field $fieldName tidak boleh kosong."
-        } else {
-            textInputLayout.error = null
         }
     }
 
@@ -83,15 +79,11 @@ class RegisterFragment : Fragment() {
                 textInputLayout.error = null
             }
         }
-
         return allFieldsNotEmpty
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-
 }
