@@ -20,7 +20,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLoginBinding.inflate(inflater,container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -33,9 +33,24 @@ class LoginFragment : Fragment() {
             it.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
         binding.btnMasuk.setOnClickListener {
-            startActivity(Intent(requireActivity(), MainActivity::class.java))
+            val userName = binding.edtUsername.editText?.text.toString().trim()
+            val password = binding.edtPassword.editText?.text.toString().trim()
+            when {
+                userName.isEmpty() -> {
+                    binding.edtUsername.error = "Username tidak boleh kosong"
+                }
+                password.isEmpty() -> {
+                    binding.edtPassword.error = "Password tidak boleh kosong"
+                }
+                else -> startActivity(Intent(requireActivity(), MainActivity::class.java))
+            }
+
+
+
         }
     }
+
+
 
 
 }

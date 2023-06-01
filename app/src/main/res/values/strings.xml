@@ -29,5 +29,7 @@
     <string name="profile">Profile</string>
     <string name="rekomendasi_profesi">Rekomendasi Profesi</string>
     <string name="minat_profesi_desc">Berdasarkan minat mata pelajaran, maka rekomendasi profesi yang cocok denganmu adalah …</string>
-
+    <string name="tooltips_password">Panjang password minimal 8 karakter. Harus mengandung huruf, angka, dan karakter spesial!</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="tidak_kosong">%s tidak boleh kosong</string>
 </resources>
