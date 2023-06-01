@@ -12,4 +12,13 @@ object InputValidate {
         }
         return true
     }
+
+    fun checkEmpty(textInputLayout: TextInputLayout, fieldName: String) {
+        val text = textInputLayout.editText?.text.toString().trim()
+        if (text.isEmpty()) {
+            textInputLayout.error = "Field $fieldName tidak boleh kosong."
+        } else {
+            textInputLayout.error = null
+        }
+    }
 }
