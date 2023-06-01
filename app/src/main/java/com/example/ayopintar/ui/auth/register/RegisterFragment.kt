@@ -8,7 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.ayopintar.databinding.FragmentRegisterBinding
-import com.google.android.material.textfield.TextInputLayout
+import com.example.ayopintar.utils.InputValidate
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
@@ -32,7 +32,6 @@ class RegisterFragment : Fragment() {
             it.findNavController().navigateUp()
         }
 
-
         val textInputLayouts = listOf(
             Pair(binding.edtName, "Nama Lengkap"),
             Pair(binding.edtAsalSekolah, "Asal Sekolah"),
@@ -40,8 +39,14 @@ class RegisterFragment : Fragment() {
         )
 
         textInputLayouts.forEach { (textInputLayout, fieldName) ->
+            textInputLayout.errorIconDrawable = null
+            textInputLayout.editText?.setOnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    InputValidate.checkEmpty(textInputLayout, fieldName)
+                }
+            }
             textInputLayout.editText?.addTextChangedListener {
-                checkEmpty(textInputLayout, fieldName)
+                InputValidate.checkEmpty(textInputLayout, fieldName)
             }
         }
 
@@ -50,10 +55,9 @@ class RegisterFragment : Fragment() {
             val asalSekolah = binding.edtAsalSekolah.editText?.text.toString().trim()
             val noHp = binding.edtNohp.editText?.text.toString().trim()
 
-            if (checkTextViewsEmpty(textInputLayouts)) {
+            if (InputValidate.checkTextViewsEmpty(textInputLayouts)) {
                 // Lanjutkan ke tindakan berikutnya jika semua TextView tidak kosong
-                val toNextRegisterFragment =
-                    RegisterFragmentDirections.actionRegisterFragmentToNextRegisterFragment()
+                val toNextRegisterFragment = RegisterFragmentDirections.actionRegisterFragmentToNextRegisterFragment()
                 toNextRegisterFragment.namaLengkap = namaLengkap
                 toNextRegisterFragment.noHp = noHp
                 toNextRegisterFragment.asalSekolah = asalSekolah
@@ -62,16 +66,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun checkEmpty(textInputLayout: TextInputLayout, fieldName: String) {
-        val text = textInputLayout.editText?.text.toString().trim()
-        if (text.isEmpty()) {
-            textInputLayout.error = "Field $fieldName tidak boleh kosong."
-        } else {
-            textInputLayout.error = null
-        }
-    }
-
-    private fun checkTextViewsEmpty(textInputLayouts: List<Pair<TextInputLayout, String>>): Boolean {
+    /*private fun checkTextViewsEmpty(textInputLayouts: List<Pair<TextInputLayout, String>>): Boolean {
         var allFieldsNotEmpty = true
 
         for ((textInputLayout, fieldName) in textInputLayouts) {
@@ -83,15 +78,11 @@ class RegisterFragment : Fragment() {
                 textInputLayout.error = null
             }
         }
-
         return allFieldsNotEmpty
-    }
-
+    }*/
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-
 }
