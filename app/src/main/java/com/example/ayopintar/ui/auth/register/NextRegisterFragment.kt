@@ -10,9 +10,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.ayopintar.R
 import com.example.ayopintar.databinding.FragmentNextRegisterBinding
-import com.example.ayopintar.utils.InputValidate.checkTextViewEmpty
-import com.example.ayopintar.utils.PasswordChecker.checkPasswordStrength
-import com.example.ayopintar.utils.PasswordChecker.checkSimilaritiesPassword
+import com.example.ayopintar.utils.InputValidate
+import com.example.ayopintar.utils.PasswordChecker
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
@@ -44,23 +43,37 @@ class NextRegisterFragment : Fragment() {
             Snackbar.LENGTH_LONG
         ).show()
 
+        val textInputLayouts = listOf(
+            Pair(binding.edtUsername, "Username"),
+            Pair(binding.edtPassword, "Password"),
+            Pair(binding.edtPasswordKonfirm, "Konfirmasi Password")
+        )
+
+        textInputLayouts.forEach { (textInputLayout, fieldName) ->
+            textInputLayout.errorIconDrawable = null
+            textInputLayout.editText?.setOnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    InputValidate.checkEmpty(textInputLayout, fieldName)
+                }
+            }
+            textInputLayout.editText?.addTextChangedListener {
+                InputValidate.checkEmpty(textInputLayout, fieldName)
+            }
+        }
+
         binding.btnDaftar.setOnClickListener {
             val pass1 = binding.edtPassword.editText?.text.toString()
             val pass2 = binding.edtPasswordKonfirm.editText?.text.toString()
 
-            if (checkTextViewEmpty(binding.edtUsername, "Username") &&
-                checkTextViewEmpty(binding.edtPassword, "Password") &&
-                checkTextViewEmpty(binding.edtPasswordKonfirm, "Konfirmasi") &&
-                checkSimilaritiesPassword(pass1, pass2)
-            ) {
+            if (InputValidate.checkTextViewsEmpty(textInputLayouts) && PasswordChecker.checkSimilaritiesPassword(pass1, pass2)) {
                 view.findNavController().navigate(R.id.action_nextRegisterFragment_to_loginFragment)
             }
         }
-        binding.edtUsername.editText?.addTextChangedListener {
+        /*binding.edtUsername.editText?.addTextChangedListener {
             val username = binding.edtUsername
             val value = username.editText?.text.toString()
             setError(username, value.isEmpty(), "Username tidak boleh kosong")
-        }
+        }*/
 
 
         binding.edtPasswordKonfirm.editText?.addTextChangedListener {
@@ -69,7 +82,7 @@ class NextRegisterFragment : Fragment() {
             val message = "Konfirmasi password tidak sesuai"
             setError(
                 binding.edtPasswordKonfirm,
-                !checkSimilaritiesPassword(password1, password2),
+                !PasswordChecker.checkSimilaritiesPassword(password1, password2),
                 message
             )
 
@@ -77,10 +90,8 @@ class NextRegisterFragment : Fragment() {
 
         binding.edtPassword.editText?.addTextChangedListener {
             val message = getString(R.string.tooltips_password)
-            setError(binding.edtPassword, !checkPasswordStrength(it.toString()), message)
+            setError(binding.edtPassword, !PasswordChecker.checkPasswordStrength(it.toString()), message)
         }
-
-
     }
 
     private fun setError(view: TextInputLayout, error: Boolean, message: String) {
