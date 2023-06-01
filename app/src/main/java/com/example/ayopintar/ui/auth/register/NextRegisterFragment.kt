@@ -45,12 +45,14 @@ class NextRegisterFragment : Fragment() {
         ).show()
 
         binding.btnDaftar.setOnClickListener {
+            val pass1 = binding.edtPassword.editText?.text.toString()
+            val pass2 = binding.edtPasswordKonfirm.editText?.text.toString()
 
             if (checkTextViewEmpty(binding.edtUsername, "Username") &&
                 checkTextViewEmpty(binding.edtPassword, "Password") &&
-                checkTextViewEmpty(binding.edtPasswordKonfirm, "Konfirmasi")
+                checkTextViewEmpty(binding.edtPasswordKonfirm, "Konfirmasi") &&
+                checkSimilaritiesPassword(pass1, pass2)
             ) {
-
                 view.findNavController().navigate(R.id.action_nextRegisterFragment_to_loginFragment)
             }
         }
