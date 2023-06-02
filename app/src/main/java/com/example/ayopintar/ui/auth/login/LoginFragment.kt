@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.ayopintar.R
 import com.example.ayopintar.databinding.FragmentLoginBinding
 import com.example.ayopintar.ui.dashboard.MainActivity
@@ -21,7 +22,7 @@ class LoginFragment : Fragment() {
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                requireActivity().finish()
+                findNavController().navigate(R.id.action_loginFragment_to_splashFragment2)
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
