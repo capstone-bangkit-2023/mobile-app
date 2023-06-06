@@ -29,6 +29,5 @@ class SplashScreenActivity : AppCompatActivity() {
                 finish()
             }, delay
         )
-
     }
 }
