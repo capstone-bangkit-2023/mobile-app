@@ -12,4 +12,6 @@
     <color name="splash_bg">#2D5DD6</color>
     <color name="transparent">#00000000</color>
     <color name="gray">#D9D9D9</color>
+    <color name="green_stroke">#479696</color>
+    <color name="red_stroke">#FF7E73</color>
 </resources>
