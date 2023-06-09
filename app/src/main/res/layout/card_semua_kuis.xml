@@ -14,9 +14,10 @@
         >
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/tv_image"
+            android:id="@+id/iv_image"
             android:layout_width="41dp"
             android:layout_height="41dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,10 +29,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
             android:text="@string/mata_pelajaran"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toEndOf="@id/tv_image"
-            app:layout_constraintTop_toTopOf="@id/tv_image" />
+            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintTop_toTopOf="@id/iv_image" />
 
         <TextView
             android:id="@+id/tv_kelas"
@@ -39,8 +41,8 @@
             android:layout_height="wrap_content"
             android:text="@string/pendidikan"
             android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-            android:textColor="@color/material_dynamic_secondary50"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_image"
+            android:textColor="@color/gray_variant"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_image"
             app:layout_constraintEnd_toEndOf="@id/tv_mata_pelajaran"
             app:layout_constraintStart_toStartOf="@id/tv_mata_pelajaran"
             app:layout_constraintTop_toBottomOf="@id/tv_mata_pelajaran" />
@@ -50,15 +52,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:src="@drawable/baseline_arrow_forward_24"
+            android:src="@drawable/arrow_forward_24"
             app:layout_constraintBottom_toBottomOf="@+id/tv_kelas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_mata_pelajaran"
             android:importantForAccessibility="no" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 </androidx.cardview.widget.CardView>
