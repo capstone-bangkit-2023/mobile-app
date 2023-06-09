@@ -27,12 +27,18 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setAdapterSemuaKuis()
+        setAdapterPoplerKuis()
     }
 
     private fun setAdapterSemuaKuis() {
         binding.rvSemuaKuis.adapter = SemuaKuisAdapter(getListMapel())
         binding.rvSemuaKuis.layoutManager = LinearLayoutManager(requireContext())
 
+    }
+    private fun setAdapterPoplerKuis(){
+        binding.rvKuisPopuler.adapter = PopulerKuisAdapter(getListMapel())
+
+        binding.rvKuisPopuler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
     private fun getListMapel(): ArrayList<PelajaranResponse> {
         val dataMapel = arrayOf("Bahasa Indonesia", "Penjas", "IPA", "IPS", "PKN")
