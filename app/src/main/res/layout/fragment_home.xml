@@ -86,17 +86,18 @@
         app:layout_constraintEnd_toEndOf="@id/textView3"
         android:layout_marginVertical="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_semua_kuis"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="260dp"
         android:layout_marginHorizontal="14dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_semuakuis"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/card_semua_kuis"
-        />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_semuakuis"
+        app:layout_constraintVertical_bias="0.278"
+        tools:listitem="@layout/card_semua_kuis" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
