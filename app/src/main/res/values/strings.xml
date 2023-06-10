@@ -32,6 +32,8 @@
     <string name="tooltips_password">Panjang password minimal 8 karakter. Harus mengandung huruf, angka, dan karakter spesial!</string>
     <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="tidak_kosong">%s tidak boleh kosong</string>
+    <string name="kuis_populer">Kuis Populer</string>
+    <string name="semua_kuis">Semua Kuis</string>
     <string name="profile_settings">Profile Settings</string>
     <string name="nilai_kuis_terbaik">Nilai Kuis Terbaik :</string>
     <string name="statistik_nilai">Statistik Nilai</string>
@@ -40,4 +42,6 @@
     <string name="mata_pelajaran_kurang_baik">Mata pelajaran kurang baik</string>
     <string name="riwayat_kuis">Riwayat Kuis</string>
     <string name="logout">Logout</string>
+    <string name="mata_pelajaran">Mata pelajaran</string>
+    <string name="pendidikan">Sekolah menengah atas</string>
 </resources>

@@ -1,0 +1,42 @@
+package com.example.ayopintar.ui.dashboard.home
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.ayopintar.R
+import com.example.ayopintar.api.response.PelajaranResponse
+import com.example.ayopintar.databinding.CardKuisPopulerBinding
+
+
+class PopulerKuisAdapter(private val data: ArrayList<PelajaranResponse>):
+    RecyclerView.Adapter<PopulerKuisAdapter.ViewHolder>() {
+
+    class ViewHolder(binding: CardKuisPopulerBinding) : RecyclerView.ViewHolder(binding.root) {
+        val image = binding.ivImage
+        val mapel = binding.tvMataPelajaran
+        val pendidikan = binding.tvKelas
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = CardKuisPopulerBinding.inflate(inflater,parent,false)
+        return ViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int = data.size
+
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val (dataMapel, dataPendidikan, dataPhoto ) = data[position]
+        with(holder){
+            mapel.text = dataMapel
+            pendidikan.text = dataPendidikan
+            Glide.with(itemView.context)
+                .load(dataPhoto)
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(image)
+        }
+    }
+}
