@@ -9,8 +9,9 @@ import com.example.ayopintar.api.response.PelajaranResponse
 import com.example.ayopintar.databinding.CardKuisPopulerBinding
 
 
-class PopulerKuisAdapter(private val data: ArrayList<PelajaranResponse>):
+class PopulerKuisAdapter(private val data: ArrayList<PelajaranResponse>) :
     RecyclerView.Adapter<PopulerKuisAdapter.ViewHolder>() {
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
     class ViewHolder(binding: CardKuisPopulerBinding) : RecyclerView.ViewHolder(binding.root) {
         val image = binding.ivImage
@@ -21,7 +22,7 @@ class PopulerKuisAdapter(private val data: ArrayList<PelajaranResponse>):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = CardKuisPopulerBinding.inflate(inflater,parent,false)
+        val binding = CardKuisPopulerBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }
 
@@ -29,14 +30,26 @@ class PopulerKuisAdapter(private val data: ArrayList<PelajaranResponse>):
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val (dataMapel, dataPendidikan, dataPhoto ) = data[position]
-        with(holder){
+        val (dataMapel, dataPendidikan, dataPhoto) = data[position]
+        with(holder) {
             mapel.text = dataMapel
             pendidikan.text = dataPendidikan
             Glide.with(itemView.context)
                 .load(dataPhoto)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(image)
+            itemView.setOnClickListener {
+                onItemClickCallback.onItemClicked(data[adapterPosition])
+            }
         }
+
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: PelajaranResponse)
     }
 }

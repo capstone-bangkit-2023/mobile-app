@@ -44,4 +44,6 @@
     <string name="logout">Logout</string>
     <string name="mata_pelajaran">Mata pelajaran</string>
     <string name="pendidikan">Sekolah menengah atas</string>
+    <string name="desc_start_quiz">Terdapat 10 soal kuis dengan bentuk soal essai. Waktu pengerjaan kuis selama 30 menit. Selamat mengerjakan!</string>
+    <string name="mulai_kuis">Mulai Kuis</string>
 </resources>
