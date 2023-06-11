@@ -9,5 +9,14 @@
         android:id="@+id/startKuisFragment"
         android:name="com.example.ayopintar.ui.kuis.StartKuisFragment"
         android:label="fragment_start_kuis"
-        tools:layout="@layout/fragment_start_kuis" />
+        tools:layout="@layout/fragment_start_kuis" >
+        <action
+            android:id="@+id/action_startKuisFragment_to_detailKuisFragment"
+            app:destination="@id/detailKuisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailKuisFragment"
+        android:name="com.example.ayopintar.ui.kuis.detailkuis.DetailKuisFragment"
+        android:label="fragment_detail_kuis"
+        tools:layout="@layout/fragment_detail_kuis" />
 </navigation>
