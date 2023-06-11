@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="vertical"
+    tools:context=".ui.kuis.StartKuisFragment">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:layout_marginVertical="12dp"
+        android:paddingVertical="10dp"
+        android:background="@null"
+        android:contentDescription="@string/back_button"
+
+        android:scaleType="fitStart"
+
+        android:src="@drawable/arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tv_mapel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mata_pelajaran"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        android:layout_marginVertical="20dp"/>
+    <TextView
+        android:id="@+id/tv_desc_kuis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/desc_start_quiz"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        app:layout_constraintStart_toStartOf="@id/tv_mapel"
+        app:layout_constraintTop_toBottomOf="@id/tv_mapel"/>
+
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/start_kuis_button"
+        android:foregroundGravity="center"
+        android:text="@string/mulai_kuis"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_desc_kuis"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

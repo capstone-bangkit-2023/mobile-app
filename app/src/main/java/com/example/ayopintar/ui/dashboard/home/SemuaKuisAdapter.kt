@@ -10,6 +10,7 @@ import com.example.ayopintar.databinding.CardSemuaKuisBinding
 
 class SemuaKuisAdapter(private val data: ArrayList<PelajaranResponse>):
     RecyclerView.Adapter<SemuaKuisAdapter.ViewHolder>() {
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
     class ViewHolder(binding: CardSemuaKuisBinding) : RecyclerView.ViewHolder(binding.root) {
         val image = binding.ivImage
@@ -36,6 +37,16 @@ class SemuaKuisAdapter(private val data: ArrayList<PelajaranResponse>):
                 .load(dataPhoto)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(image)
+            itemView.setOnClickListener { onItemClickCallback.onItemClicked(data[adapterPosition]) }
         }
+
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: PelajaranResponse)
     }
 }
