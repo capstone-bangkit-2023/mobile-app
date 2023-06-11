@@ -56,8 +56,8 @@ class LoginFragment : Fragment() {
                     binding.edtPassword.error = "Password tidak boleh kosong"
                 }
                 else -> {
-                    requireActivity().finish()
                     startActivity(Intent(requireActivity(), MainActivity::class.java))
+                    requireActivity().finish()
                 }
             }
 
