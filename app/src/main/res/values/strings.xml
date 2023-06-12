@@ -45,4 +45,10 @@
     <string name="pendidikan">Sekolah menengah atas</string>
     <string name="desc_start_quiz">Terdapat 10 soal kuis dengan bentuk soal essai. Waktu pengerjaan kuis selama 30 menit. Selamat mengerjakan!</string>
     <string name="mulai_kuis">Mulai Kuis</string>
+    <string name="soal_nomor">Soal %s</string>
+    <string name="soal_sebelumnya">Soal Sebelumnya</string>
+    <string name="soal_berikutnya">Soal Berikutnya</string>
+    <string name="dummy_timer">30:00</string>
+    <string name="jawaban">Jawaban</string>
+    <string name="dummy_kuis">Apa yang dimaksud dengan puisi?</string>
 </resources>

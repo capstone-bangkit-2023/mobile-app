@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.ayopintar.R
 import com.example.ayopintar.databinding.FragmentStartKuisBinding
 
 
@@ -27,5 +29,8 @@ class StartKuisFragment : Fragment() {
         if (mapel != null)   binding.tvMapel.text = mapel
 
         binding.btnBack.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+        binding.btnStart.setOnClickListener {
+            findNavController().navigate(R.id.action_startKuisFragment_to_detailKuisFragment)
+        }
     }
 }
