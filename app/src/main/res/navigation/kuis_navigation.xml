@@ -18,5 +18,14 @@
         android:id="@+id/detailKuisFragment"
         android:name="com.example.ayopintar.ui.kuis.detailkuis.DetailKuisFragment"
         android:label="fragment_detail_kuis"
-        tools:layout="@layout/fragment_detail_kuis" />
+        tools:layout="@layout/fragment_detail_kuis" >
+        <action
+            android:id="@+id/action_detailKuisFragment_to_nilaiKuisFragment"
+            app:destination="@id/nilaiKuisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nilaiKuisFragment"
+        android:name="com.example.ayopintar.ui.kuis.nilaikuis.NilaiKuisFragment"
+        android:label="fragment_nilai_kuis"
+        tools:layout="@layout/fragment_nilai_kuis" />
 </navigation>
