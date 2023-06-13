@@ -27,5 +27,5 @@ interface ApiService {
     ) : Call<RegisterResponse>
 
     @GET("mataPelajaran")
-    fun getListMapel(@Header("") token: String) : Call<GetListMapelResponse>
+    fun getListMapel(@Header("Authorization") token: String) : Call<GetListMapelResponse>
 }
