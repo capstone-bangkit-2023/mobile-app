@@ -1,10 +1,13 @@
 package com.example.ayopintar.api
 
+import com.example.ayopintar.api.response.GetListMapelResponse
 import com.example.ayopintar.api.response.LoginResponse
 import com.example.ayopintar.api.response.RegisterResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
@@ -22,4 +25,7 @@ interface ApiService {
         @Field("namaSekolah") namaSekolah: String? = null,
         @Field("email") email: String
     ) : Call<RegisterResponse>
+
+    @GET("mataPelajaran")
+    fun getListMapel(@Header("") token: String) : Call<GetListMapelResponse>
 }
