@@ -51,4 +51,9 @@
     <string name="dummy_timer">30:00</string>
     <string name="jawaban">Jawaban</string>
     <string name="dummy_kuis">Apa yang dimaksud dengan puisi?</string>
+    <string name="selamat">Selamat!</string>
+    <string name="kuis_nilai_mapel">Kamu telah menyelesaikan kuis %s</string>
+    <string name="dummy_nilai">70</string>
+    <string name="kembali_ke_halaman_utama"><u>Kembali ke halaman utama</u></string>
+    <string name="nilaimu">Nilaimu</string>
 </resources>
