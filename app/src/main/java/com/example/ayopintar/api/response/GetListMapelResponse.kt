@@ -17,7 +17,7 @@ data class GetListMapelResponse(
 data class DataItem(
 
 	@field:SerializedName("link_foto")
-	val linkFoto: Any? = null,
+	val linkFoto: String? = null,
 
 	@field:SerializedName("createdAt")
 	val createdAt: String? = null,
