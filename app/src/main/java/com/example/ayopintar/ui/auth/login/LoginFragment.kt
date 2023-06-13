@@ -65,6 +65,7 @@ class LoginFragment : Fragment() {
         binding.btnMasuk.setOnClickListener {
             val userName = binding.edtUsername.editText?.text.toString().trim()
             val password = binding.edtPassword.editText?.text.toString().trim()
+
             when {
                 userName.isEmpty() -> {
                     binding.edtUsername.error = "Username tidak boleh kosong"
@@ -74,18 +75,21 @@ class LoginFragment : Fragment() {
                 }
                 else -> {
                     viewModel.postLogin(userName, password)
-                    viewModel.loginResult.observe(requireActivity()) {
-                        tokenViewModel.saveToken(it.accessToken)
-                    }
-                    viewModel.loginMsg.observe(requireActivity()) {
-                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                    }
-                    tokenViewModel.getToken().observe(requireActivity()) {
-                        if (it != "") {
-                            startActivity(Intent(requireActivity(), MainActivity::class.java))
-                            requireActivity().finish()
-                        }
-                    }
+                }
+            }
+
+            viewModel.loginResult.observe(requireActivity()) {
+                tokenViewModel.saveToken(it.accessToken)
+            }
+
+            viewModel.loginMsg.observe(requireActivity()) {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
+
+            tokenViewModel.getToken().observe(requireActivity()) {
+                if (it != "") {
+                    startActivity(Intent(requireActivity(), MainActivity::class.java))
+                    requireActivity().finish()
                 }
             }
         }
