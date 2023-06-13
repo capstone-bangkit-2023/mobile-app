@@ -56,4 +56,5 @@
     <string name="dummy_nilai">70</string>
     <string name="kembali_ke_halaman_utama"><u>Kembali ke halaman utama</u></string>
     <string name="nilaimu">Nilaimu</string>
+    <string name="email">Email</string>
 </resources>
