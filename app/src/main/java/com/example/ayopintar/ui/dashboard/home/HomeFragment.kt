@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ayopintar.api.response.PelajaranResponse
+import com.example.ayopintar.api.response.PelajaranDummyResponse
 import com.example.ayopintar.databinding.FragmentHomeBinding
 import com.example.ayopintar.ui.kuis.KuisActivity
 import com.example.ayopintar.ui.kuis.KuisActivity.Companion.extraMapel
@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         binding.rvSemuaKuis.layoutManager = LinearLayoutManager(requireContext())
         binding.rvSemuaKuis.adapter = semuaKuisAdapter
         semuaKuisAdapter.setOnItemClickCallback(object : SemuaKuisAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: PelajaranResponse) {
+            override fun onItemClicked(data: PelajaranDummyResponse) {
                 intentStartKuis(data)
             }
 
@@ -53,18 +53,18 @@ class HomeFragment : Fragment() {
         binding.rvKuisPopuler.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         populerKuisAdapter.setOnItemClickCallback(object : PopulerKuisAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: PelajaranResponse) {
+            override fun onItemClicked(data: PelajaranDummyResponse) {
                 intentStartKuis(data)
             }
         })
     }
-    private fun intentStartKuis(data: PelajaranResponse){
+    private fun intentStartKuis(data: PelajaranDummyResponse){
         val intent = Intent(requireActivity(), KuisActivity::class.java)
             .putExtra(extraMapel, data.mataPelajaran)
         startActivity(intent)
     }
 
-    private fun getListMapel(): ArrayList<PelajaranResponse> {
+    private fun getListMapel(): ArrayList<PelajaranDummyResponse> {
         val dataMapel = arrayOf("Bahasa Indonesia", "Penjas", "IPA", "IPS", "PKN")
         val dataPendidikan = arrayOf(
             "Sekolah Menengah Akhir",
@@ -80,10 +80,10 @@ class HomeFragment : Fragment() {
             "https://source.unsplash.com/random/900×700/?sport",
             "https://source.unsplash.com/random/900×700/?vegetable"
         )
-        val listHero = ArrayList<PelajaranResponse>()
+        val listHero = ArrayList<PelajaranDummyResponse>()
 
         for (i in dataMapel.indices) {
-            val hero = PelajaranResponse(dataMapel[i], dataPendidikan[i], dataPhoto[i])
+            val hero = PelajaranDummyResponse(dataMapel[i], dataPendidikan[i], dataPhoto[i])
             listHero.add(hero)
         }
         return listHero

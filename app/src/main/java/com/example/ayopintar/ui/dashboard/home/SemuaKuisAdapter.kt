@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ayopintar.R
-import com.example.ayopintar.api.response.PelajaranResponse
+import com.example.ayopintar.api.response.PelajaranDummyResponse
 import com.example.ayopintar.databinding.CardSemuaKuisBinding
 
-class SemuaKuisAdapter(private val data: ArrayList<PelajaranResponse>):
+class SemuaKuisAdapter(private val data: ArrayList<PelajaranDummyResponse>):
     RecyclerView.Adapter<SemuaKuisAdapter.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -47,6 +47,6 @@ class SemuaKuisAdapter(private val data: ArrayList<PelajaranResponse>):
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: PelajaranResponse)
+        fun onItemClicked(data: PelajaranDummyResponse)
     }
 }
