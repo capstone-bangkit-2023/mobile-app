@@ -1,70 +1,91 @@
 package com.example.ayopintar.ui.dashboard.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ayopintar.api.response.PelajaranDummyResponse
+import com.example.ayopintar.api.response.DataItem
 import com.example.ayopintar.databinding.FragmentHomeBinding
+import com.example.ayopintar.token.TokenPreference
+import com.example.ayopintar.token.TokenViewModel
+import com.example.ayopintar.token.TokenViewModelFactory
 import com.example.ayopintar.ui.kuis.KuisActivity
 import com.example.ayopintar.ui.kuis.KuisActivity.Companion.extraMapel
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
 
 class HomeFragment : Fragment() {
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var tokenViewModel: TokenViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val pref = TokenPreference.getInstance(requireContext().dataStore)
+        tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
         setAdapterSemuaKuis()
         setAdapterPoplerKuis()
     }
 
     private fun setAdapterSemuaKuis() {
-        val semuaKuisAdapter = SemuaKuisAdapter(getListMapel())
-        binding.rvSemuaKuis.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvSemuaKuis.adapter = semuaKuisAdapter
-        semuaKuisAdapter.setOnItemClickCallback(object : SemuaKuisAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: PelajaranDummyResponse) {
-                intentStartKuis(data)
+        tokenViewModel.getToken().observe(this) {
+            viewModel.getListMapel(it)
+            viewModel.loginResult.observe(this) { list ->
+                val semuaKuisAdapter = SemuaKuisAdapter(list)
+                binding.rvSemuaKuis.layoutManager = LinearLayoutManager(requireContext())
+                binding.rvSemuaKuis.adapter = semuaKuisAdapter
+                semuaKuisAdapter.setOnItemClickCallback(object : SemuaKuisAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: DataItem?) {
+                        intentStartKuis(data)
+                    }
+                })
             }
-
-        })
-
-
+        }
     }
 
     private fun setAdapterPoplerKuis() {
-        val populerKuisAdapter = PopulerKuisAdapter(getListMapel())
-        binding.rvKuisPopuler.adapter = populerKuisAdapter
-        binding.rvKuisPopuler.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        populerKuisAdapter.setOnItemClickCallback(object : PopulerKuisAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: PelajaranDummyResponse) {
-                intentStartKuis(data)
+        tokenViewModel.getToken().observe(this) {
+            viewModel.getListMapel(it)
+            viewModel.loginResult.observe(this) { list ->
+                val semuaKuisAdapter = PopulerKuisAdapter(list)
+                binding.rvKuisPopuler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                binding.rvKuisPopuler.adapter = semuaKuisAdapter
+                semuaKuisAdapter.setOnItemClickCallback(object : PopulerKuisAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: DataItem?) {
+                        intentStartKuis(data)
+                    }
+                })
             }
-        })
+        }
     }
-    private fun intentStartKuis(data: PelajaranDummyResponse){
+    private fun intentStartKuis(data: DataItem?){
         val intent = Intent(requireActivity(), KuisActivity::class.java)
-            .putExtra(extraMapel, data.mataPelajaran)
+            .putExtra(extraMapel, data?.mataPelajaran)
         startActivity(intent)
     }
 
-    private fun getListMapel(): ArrayList<PelajaranDummyResponse> {
+    /*private fun getListMapel(): ArrayList<PelajaranDummyResponse> {
         val dataMapel = arrayOf("Bahasa Indonesia", "Penjas", "IPA", "IPS", "PKN")
         val dataPendidikan = arrayOf(
             "Sekolah Menengah Akhir",
@@ -87,7 +108,7 @@ class HomeFragment : Fragment() {
             listHero.add(hero)
         }
         return listHero
-    }
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()
