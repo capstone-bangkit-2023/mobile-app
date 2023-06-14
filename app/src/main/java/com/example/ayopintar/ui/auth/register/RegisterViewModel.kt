@@ -27,6 +27,7 @@ class RegisterViewModel : ViewModel() {
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
                 Log.e("postRegister", "onFailure : ${t.message}")
+                _registerMsg.value = t.message
             }
         })
     }
