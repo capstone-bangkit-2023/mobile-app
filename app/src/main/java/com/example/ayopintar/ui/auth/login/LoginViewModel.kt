@@ -27,8 +27,6 @@ class LoginViewModel : ViewModel() {
                         _loginMsg.value = response.body()!!.status
                         _loginResult.value = response.body()!!.data
                     }
-                } else {
-                    _loginMsg.value = response.body()!!.status
                 }
             }
 
