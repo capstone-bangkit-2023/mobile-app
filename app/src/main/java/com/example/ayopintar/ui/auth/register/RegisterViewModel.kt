@@ -22,8 +22,6 @@ class RegisterViewModel : ViewModel() {
                     if (response.body() != null) {
                         _registerMsg.value = response.body()!!.message
                     }
-                } else {
-                    _registerMsg.value = response.body()!!.message
                 }
             }
 

@@ -32,6 +32,7 @@ class LoginViewModel : ViewModel() {
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 Log.e("postLogin", "onFailure : ${t.message}")
+                _loginMsg.value = t.message
             }
         })
     }
