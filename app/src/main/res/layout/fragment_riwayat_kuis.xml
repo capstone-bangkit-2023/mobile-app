@@ -7,18 +7,6 @@
     tools:context=".ui.dashboard.riwayatkuis.RiwayatKuisFragment">
 
 
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="49dp"
-        android:layout_height="49dp"
-        android:layout_marginVertical="12dp"
-        android:background="@null"
-        android:contentDescription="@string/back_button"
-        android:paddingVertical="10dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/arrow_back_24"
-        app:layout_constraintStart_toStartOf="@+id/tv_riwayat"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_riwayat"
@@ -31,7 +19,7 @@
         android:layout_marginHorizontal="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back" />
+        app:layout_constraintTop_toTopOf="parent"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
