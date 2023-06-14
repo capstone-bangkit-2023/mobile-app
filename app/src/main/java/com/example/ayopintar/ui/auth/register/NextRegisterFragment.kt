@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.ayopintar.R
@@ -30,16 +32,20 @@ class NextRegisterFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val viewModel = ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
+
+        val dataNama = args.namaLengkap
+        val dataEmail = args.email
+        val dataSekolah = args.asalSekolah
+
         binding.btnBack.setOnClickListener {
             it.findNavController().navigateUp()
         }
-        val dataNama = args.namaLengkap
-        val dataNoHp = args.noHp
-        val dataSekolah = args.asalSekolah
 
         Snackbar.make(
             binding.root,
-            "Nama: $dataNama, noHp = $dataNoHp, sekolah: $dataSekolah",
+            "Nama: $dataNama, noHp = $dataEmail, sekolah: $dataSekolah",
             Snackbar.LENGTH_LONG
         ).show()
 
@@ -62,11 +68,21 @@ class NextRegisterFragment : Fragment() {
         }
 
         binding.btnDaftar.setOnClickListener {
+            val username = binding.edtUsername.editText?.text.toString()
             val pass1 = binding.edtPassword.editText?.text.toString()
             val pass2 = binding.edtPasswordKonfirm.editText?.text.toString()
 
             if (InputValidate.checkTextViewsEmpty(textInputLayouts) && PasswordChecker.checkSimilaritiesPassword(pass1, pass2)) {
-                view.findNavController().navigate(R.id.action_nextRegisterFragment_to_loginFragment)
+                viewModel.postRegister(username, pass1, pass2, dataNama, dataSekolah, dataEmail)
+
+                viewModel.registerMsg.observe(requireActivity()) {
+                    if (it == "Success") {
+                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                        view.findNavController().navigate(R.id.action_nextRegisterFragment_to_loginFragment)
+                    } else {
+                        Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+                    }
+                }
             }
         }
         /*binding.edtUsername.editText?.addTextChangedListener {

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class PelajaranResponse(
+data class PelajaranDummyResponse(
     val mataPelajaran: String,
     val pendidikan: String,
     val photo: String

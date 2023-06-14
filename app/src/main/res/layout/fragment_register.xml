@@ -117,19 +117,19 @@
 
 
     <TextView
-        android:id="@+id/label_nohp"
+        android:id="@+id/label_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginTop="32dp"
-        android:labelFor="@id/edt_nohp"
-        android:text="@string/nomor_telepon"
+        android:labelFor="@id/edt_email"
+        android:text="@string/email"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/label_nama"
         app:layout_constraintTop_toBottomOf="@+id/edt_asal_sekolah" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edt_nohp"
+        android:id="@+id/edt_email"
         style="@style/OutlinedBoxWithBorderRadius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -137,14 +137,12 @@
         app:layout_constraintEnd_toEndOf="@+id/edt_asal_sekolah"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/edt_asal_sekolah"
-        app:layout_constraintTop_toBottomOf="@+id/label_nohp">
+        app:layout_constraintTop_toBottomOf="@+id/label_email">
 
 
         <com.google.android.material.textfield.TextInputEditText
-
-
             style="@style/OutlinedBoxWithBorderRadius"
-            android:inputType="phone"
+            android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -167,7 +165,7 @@
         app:iconTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nohp" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -55,9 +55,9 @@
             app:argType="string"
             android:defaultValue="myschool" />
         <argument
-            android:name="no_hp"
+            android:name="email"
             app:argType="string"
-            android:defaultValue="0818181"
+            android:defaultValue="user@mail.com"
             />
         <action
             android:id="@+id/action_nextRegisterFragment_to_loginFragment"

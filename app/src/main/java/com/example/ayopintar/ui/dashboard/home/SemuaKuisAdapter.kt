@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ayopintar.R
-import com.example.ayopintar.api.response.PelajaranResponse
+import com.example.ayopintar.api.response.DataItem
 import com.example.ayopintar.databinding.CardSemuaKuisBinding
 
-class SemuaKuisAdapter(private val data: ArrayList<PelajaranResponse>):
+class SemuaKuisAdapter(private val data: List<DataItem?>?):
     RecyclerView.Adapter<SemuaKuisAdapter.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -25,19 +25,20 @@ class SemuaKuisAdapter(private val data: ArrayList<PelajaranResponse>):
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = data!!.size
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val (dataMapel, dataPendidikan, dataPhoto ) = data[position]
+        val dataMapel = data?.get(position)?.mataPelajaran
+        val dataPhoto = data?.get(position)?.linkFoto ?: ""
         with(holder){
             mapel.text = dataMapel
-            pendidikan.text = dataPendidikan
+            pendidikan.text = holder.itemView.context.getString(R.string.pendidikan)
             Glide.with(itemView.context)
                 .load(dataPhoto)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(image)
-            itemView.setOnClickListener { onItemClickCallback.onItemClicked(data[adapterPosition]) }
+            itemView.setOnClickListener { onItemClickCallback.onItemClicked(data?.get(adapterPosition)) }
         }
 
     }
@@ -47,6 +48,6 @@ class SemuaKuisAdapter(private val data: ArrayList<PelajaranResponse>):
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: PelajaranResponse)
+        fun onItemClicked(data: DataItem?)
     }
 }

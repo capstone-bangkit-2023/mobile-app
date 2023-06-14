@@ -1,6 +1,7 @@
 package com.example.ayopintar.ui.auth.register
 
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,7 @@ class RegisterFragment : Fragment() {
         val textInputLayouts = listOf(
             Pair(binding.edtName, "Nama Lengkap"),
             Pair(binding.edtAsalSekolah, "Asal Sekolah"),
-            Pair(binding.edtNohp, "Nomor HP")
+            Pair(binding.edtEmail, "Email")
         )
 
         textInputLayouts.forEach { (textInputLayout, fieldName) ->
@@ -53,15 +54,19 @@ class RegisterFragment : Fragment() {
         binding.btnNext.setOnClickListener {
             val namaLengkap = binding.edtName.editText?.text.toString().trim()
             val asalSekolah = binding.edtAsalSekolah.editText?.text.toString().trim()
-            val noHp = binding.edtNohp.editText?.text.toString().trim()
+            val email = binding.edtEmail.editText?.text.toString().trim()
 
             if (InputValidate.checkTextViewsEmpty(textInputLayouts)) {
                 // Lanjutkan ke tindakan berikutnya jika semua TextView tidak kosong
                 val toNextRegisterFragment = RegisterFragmentDirections.actionRegisterFragmentToNextRegisterFragment()
-                toNextRegisterFragment.namaLengkap = namaLengkap
-                toNextRegisterFragment.noHp = noHp
-                toNextRegisterFragment.asalSekolah = asalSekolah
-                view.findNavController().navigate(toNextRegisterFragment)
+                if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    toNextRegisterFragment.namaLengkap = namaLengkap
+                    toNextRegisterFragment.email = email
+                    toNextRegisterFragment.asalSekolah = asalSekolah
+                    view.findNavController().navigate(toNextRegisterFragment)
+                } else {
+                    binding.edtEmail.error = "Format Email Tidak sesuai"
+                }
             }
         }
     }
