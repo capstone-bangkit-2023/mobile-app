@@ -13,7 +13,7 @@ data class GetRiwayatKuisResponse(
 	@field:SerializedName("status")
 	val status: String
 )
-// Agak laen
+
 data class DataRiwayatKuis(
 
 	@field:SerializedName("nilaiTerbaruPerMapel")
