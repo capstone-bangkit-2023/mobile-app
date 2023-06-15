@@ -14,32 +14,17 @@ data class GetSoalResponse(
 	val status: String
 )
 
-data class SoalItem(
-
-	@field:SerializedName("createdAt")
-	val createdAt: String,
+data class Soal(
 
 	@field:SerializedName("soal")
 	val soal: String,
 
 	@field:SerializedName("kode_soal")
-	val kodeSoal: String,
-
-	@field:SerializedName("kode_matapelajaran")
-	val kodeMatapelajaran: String,
-
-	@field:SerializedName("id")
-	val id: Int,
-
-	@field:SerializedName("jawaban")
-	val jawaban: String,
-
-	@field:SerializedName("updatedAt")
-	val updatedAt: String
+	val kodeSoal: String
 )
 
 data class DataSoal(
 
 	@field:SerializedName("soal")
-	val soal: List<SoalItem>
+	val soal: Soal
 )
