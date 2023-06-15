@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Ayo Pintar</string>
     <string name="app_mulai_text">Quiz App</string>
     <string name="app_mulai_text1">Ayo mulai untuk belajar!</string>
@@ -31,7 +31,7 @@
     <string name="tooltips_password">Panjang password minimal 8 karakter. Harus mengandung huruf, angka, dan karakter spesial!</string>
     <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="tidak_kosong">%s tidak boleh kosong</string>
-    <string name="kuis_populer">Kuis Populer</string>
+    <string name="kuis_populer" tools:ignore="Typos">Kuis Populer</string>
     <string name="semua_kuis">Semua Kuis</string>
     <string name="profile_settings">Profile Settings</string>
     <string name="nilai_kuis_terbaik">Nilai Kuis Terbaik :</string>
@@ -60,4 +60,5 @@
     <string name="per_100">/100</string>
     <string name="nomor_7">7</string>
     <string name="nomor_3">3</string>
+    <string name="selesai">Selesai</string>
 </resources>

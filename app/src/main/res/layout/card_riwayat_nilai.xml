@@ -29,12 +29,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             android:text="@string/mata_pelajaran"
-            app:layout_constraintEnd_toStartOf="@+id/tv_history_nilai"
+            app:layout_constraintEnd_toStartOf="@+id/tv_nilai"
             app:layout_constraintStart_toEndOf="@id/iv_image"
             app:layout_constraintTop_toTopOf="@id/iv_image" />
 
         <TextView
-            android:id="@+id/tv_kelas"
+            android:id="@+id/tv_pendidikan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/pendidikan"
@@ -46,17 +46,19 @@
             app:layout_constraintTop_toBottomOf="@id/tv_mata_pelajaran" />
 
         <TextView
-            android:id="@+id/tv_history_nilai"
+            android:id="@+id/tv_nilai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:importantForAccessibility="no"
             android:text="@string/dummy_nilai"
-            android:textColor="@color/blue_primary"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textColor="@color/blue_primary"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_kelas"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_mata_pelajaran"
-            android:importantForAccessibility="no" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.583" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
