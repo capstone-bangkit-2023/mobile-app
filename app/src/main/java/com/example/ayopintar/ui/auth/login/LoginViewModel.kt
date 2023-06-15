@@ -27,13 +27,12 @@ class LoginViewModel : ViewModel() {
                         _loginMsg.value = response.body()!!.status
                         _loginResult.value = response.body()!!.data
                     }
-                } else {
-                    _loginMsg.value = response.body()!!.status
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 Log.e("postLogin", "onFailure : ${t.message}")
+                _loginMsg.value = t.message
             }
         })
     }

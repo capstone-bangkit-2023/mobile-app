@@ -22,13 +22,12 @@ class RegisterViewModel : ViewModel() {
                     if (response.body() != null) {
                         _registerMsg.value = response.body()!!.message
                     }
-                } else {
-                    _registerMsg.value = response.body()!!.message
                 }
             }
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
                 Log.e("postRegister", "onFailure : ${t.message}")
+                _registerMsg.value = t.message
             }
         })
     }

@@ -16,10 +16,10 @@
         android:label="fragment_profesi"
         tools:layout="@layout/fragment_profesi" />
     <fragment
-        android:id="@+id/navigation_tips"
-        android:name="com.example.ayopintar.ui.dashboard.tipsbelajar.TipsBelajarFragment"
+        android:id="@+id/navigation_riwayat"
+        android:name="com.example.ayopintar.ui.dashboard.riwayatkuis.RiwayatKuisFragment"
         android:label="fragment_tips_belajar"
-        tools:layout="@layout/fragment_tips_belajar" />
+        tools:layout="@layout/fragment_riwayat_kuis" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.ayopintar.ui.dashboard.profile.ProfileFragment"

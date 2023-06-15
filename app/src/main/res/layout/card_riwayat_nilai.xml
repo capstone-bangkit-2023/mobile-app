@@ -1,0 +1,62 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    app:cardElevation="5dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="15dp"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_image"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full" />
+
+        <TextView
+            android:id="@+id/tv_mata_pelajaran"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/mata_pelajaran"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintTop_toTopOf="@id/iv_image" />
+
+        <TextView
+            android:id="@+id/tv_kelas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pendidikan"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textColor="@color/gray_variant"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_image"
+            app:layout_constraintEnd_toEndOf="@id/tv_mata_pelajaran"
+            app:layout_constraintStart_toStartOf="@id/tv_mata_pelajaran"
+            app:layout_constraintTop_toBottomOf="@id/tv_mata_pelajaran" />
+
+        <TextView
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_nilai"
+            android:textColor="@color/blue_primary"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_kelas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_mata_pelajaran"
+            android:importantForAccessibility="no" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

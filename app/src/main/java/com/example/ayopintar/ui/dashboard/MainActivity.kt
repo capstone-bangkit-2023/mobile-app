@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_home,
                 R.id.navigation_profesi,
-                R.id.navigation_tips,
+                R.id.navigation_riwayat,
                 R.id.navigation_profile
             )
         )

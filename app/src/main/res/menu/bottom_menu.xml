@@ -11,11 +11,9 @@
         android:icon="@drawable/profesi"
         android:title="@string/profesi" />
     <item
-        android:id="@+id/navigation_tips"
-        android:icon="@drawable/tips_belajar"
-        android:title="@string/tips_belajar" />
-
-
+        android:id="@+id/navigation_riwayat"
+        android:icon="@drawable/round_history_edu_24"
+        android:title="@string/riwayat_kuis" />
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/outline_account_circle_24"
