@@ -45,14 +45,18 @@ class HomeFragment : Fragment() {
         val pref = TokenPreference.getInstance(requireContext().dataStore)
         tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
         viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
-        setAdapterSemuaKuis()
-        setAdapterPoplerKuis()
+
+        tokenViewModel.getToken().observe(viewLifecycleOwner) {
+            viewModel.getListMapel(it)
+            viewModel.loginResult.observe(viewLifecycleOwner) { list->
+                setAdapterSemuaKuis(list)
+                setAdapterPoplerKuis(list)
+            }}
+
+
     }
 
-    private fun setAdapterSemuaKuis() {
-        tokenViewModel.getToken().observe(this) {
-            viewModel.getListMapel(it)
-            viewModel.loginResult.observe(this) { list ->
+    private fun setAdapterSemuaKuis(list: List<DataItem?>?) {
                 val semuaKuisAdapter = SemuaKuisAdapter(list)
                 binding.rvSemuaKuis.layoutManager = LinearLayoutManager(requireContext())
                 binding.rvSemuaKuis.adapter = semuaKuisAdapter
@@ -61,14 +65,10 @@ class HomeFragment : Fragment() {
                         intentStartKuis(data)
                     }
                 })
-            }
-        }
+
     }
 
-    private fun setAdapterPoplerKuis() {
-        tokenViewModel.getToken().observe(this) {
-            viewModel.getListMapel(it)
-            viewModel.loginResult.observe(this) { list ->
+    private fun setAdapterPoplerKuis(list: List<DataItem?>?) {
                 val semuaKuisAdapter = PopulerKuisAdapter(list)
                 binding.rvKuisPopuler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 binding.rvKuisPopuler.adapter = semuaKuisAdapter
@@ -77,8 +77,7 @@ class HomeFragment : Fragment() {
                         intentStartKuis(data)
                     }
                 })
-            }
-        }
+
     }
     private fun intentStartKuis(data: DataItem?){
         val intent = Intent(requireActivity(), KuisActivity::class.java)
