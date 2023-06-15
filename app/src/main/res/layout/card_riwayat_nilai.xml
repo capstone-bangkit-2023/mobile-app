@@ -29,7 +29,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             android:text="@string/mata_pelajaran"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintEnd_toStartOf="@+id/tv_history_nilai"
             app:layout_constraintStart_toEndOf="@id/iv_image"
             app:layout_constraintTop_toTopOf="@id/iv_image" />
 
@@ -46,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_mata_pelajaran" />
 
         <TextView
-            android:id="@+id/imageButton"
+            android:id="@+id/tv_history_nilai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dummy_nilai"
