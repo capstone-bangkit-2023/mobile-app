@@ -18,6 +18,7 @@ import com.example.ayopintar.token.TokenPreference
 import com.example.ayopintar.token.TokenViewModel
 import com.example.ayopintar.token.TokenViewModelFactory
 import com.example.ayopintar.ui.kuis.KuisActivity
+import com.example.ayopintar.ui.kuis.KuisActivity.Companion.extraIdMapel
 import com.example.ayopintar.ui.kuis.KuisActivity.Companion.extraMapel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
@@ -82,6 +83,7 @@ class HomeFragment : Fragment() {
     private fun intentStartKuis(data: DataItem?){
         val intent = Intent(requireActivity(), KuisActivity::class.java)
             .putExtra(extraMapel, data?.mataPelajaran)
+            .putExtra(extraIdMapel, data?.kodeMatapelajaran)
         startActivity(intent)
     }
 
