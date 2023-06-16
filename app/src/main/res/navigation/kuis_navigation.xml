@@ -27,5 +27,14 @@
         android:id="@+id/nilaiKuisFragment"
         android:name="com.example.ayopintar.ui.kuis.nilaikuis.NilaiKuisFragment"
         android:label="fragment_nilai_kuis"
-        tools:layout="@layout/fragment_nilai_kuis" />
+        tools:layout="@layout/fragment_nilai_kuis" >
+        <argument
+            android:name="kode_soal"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="jawaban"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
 </navigation>
