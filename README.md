@@ -75,7 +75,7 @@ To install and use Ayo Pintar App on your Android device, follow these steps:
 
 ### Installation
 
-you can download the app from https://github.com/capstone-bangkit-2023/mobile-app.git
+you can download the app from [https://github.com/capstone-bangkit-2023/mobile-app.git](https://github.com/capstone-bangkit-2023/mobile-app/releases/tag/0.0.1)
 - install the application on your device
 ### Or you can install manually using Android Studio
 
