@@ -78,6 +78,10 @@ class LoginFragment : Fragment() {
                 }
             }
 
+            viewModel.isLoading.observe(requireActivity()) {
+                showLoading(it)
+            }
+
             viewModel.loginResult.observe(requireActivity()) {
                 tokenViewModel.saveToken(it.accessToken)
             }
@@ -93,5 +97,9 @@ class LoginFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.loadingIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

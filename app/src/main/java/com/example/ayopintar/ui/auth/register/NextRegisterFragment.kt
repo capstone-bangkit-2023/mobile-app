@@ -45,7 +45,7 @@ class NextRegisterFragment : Fragment() {
 
         Snackbar.make(
             binding.root,
-            "Nama: $dataNama, noHp = $dataEmail, sekolah: $dataSekolah",
+            "Nama: $dataNama, email = $dataEmail, sekolah: $dataSekolah",
             Snackbar.LENGTH_LONG
         ).show()
 
@@ -75,8 +75,12 @@ class NextRegisterFragment : Fragment() {
             if (InputValidate.checkTextViewsEmpty(textInputLayouts) && PasswordChecker.checkSimilaritiesPassword(pass1, pass2)) {
                 viewModel.postRegister(username, pass1, pass2, dataNama, dataSekolah, dataEmail)
 
+                viewModel.isLoading.observe(requireActivity()) {
+                    showLoading(it)
+                }
+
                 viewModel.registerMsg.observe(requireActivity()) {
-                    if (it == "Success") {
+                    if (it == "Registrasi berhasil") {
                         Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                         view.findNavController().navigate(R.id.action_nextRegisterFragment_to_loginFragment)
                     } else {
@@ -123,9 +127,12 @@ class NextRegisterFragment : Fragment() {
 
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.loadingIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }
