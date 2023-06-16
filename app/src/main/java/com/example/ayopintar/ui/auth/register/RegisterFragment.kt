@@ -57,7 +57,7 @@ class RegisterFragment : Fragment() {
             val email = binding.edtEmail.editText?.text.toString().trim()
 
             if (InputValidate.checkTextViewsEmpty(textInputLayouts)) {
-                // Lanjutkan ke tindakan berikutnya jika semua TextView tidak kosong
+
                 val toNextRegisterFragment = RegisterFragmentDirections.actionRegisterFragmentToNextRegisterFragment()
                 if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     toNextRegisterFragment.namaLengkap = namaLengkap
@@ -70,21 +70,6 @@ class RegisterFragment : Fragment() {
             }
         }
     }
-
-    /*private fun checkTextViewsEmpty(textInputLayouts: List<Pair<TextInputLayout, String>>): Boolean {
-        var allFieldsNotEmpty = true
-
-        for ((textInputLayout, fieldName) in textInputLayouts) {
-            val text = textInputLayout.editText?.text.toString().trim()
-            if (text.isEmpty()) {
-                textInputLayout.error = "Field $fieldName tidak boleh kosong."
-                allFieldsNotEmpty = false
-            } else {
-                textInputLayout.error = null
-            }
-        }
-        return allFieldsNotEmpty
-    }*/
 
     override fun onDestroy() {
         super.onDestroy()

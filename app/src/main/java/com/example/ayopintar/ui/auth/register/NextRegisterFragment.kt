@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +15,6 @@ import com.example.ayopintar.R
 import com.example.ayopintar.databinding.FragmentNextRegisterBinding
 import com.example.ayopintar.utils.InputValidate
 import com.example.ayopintar.utils.PasswordChecker
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 class NextRegisterFragment : Fragment() {
@@ -42,12 +42,6 @@ class NextRegisterFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             it.findNavController().navigateUp()
         }
-
-        Snackbar.make(
-            binding.root,
-            "Nama: $dataNama, email = $dataEmail, sekolah: $dataSekolah",
-            Snackbar.LENGTH_LONG
-        ).show()
 
         val textInputLayouts = listOf(
             Pair(binding.edtUsername, "Username"),
@@ -89,11 +83,6 @@ class NextRegisterFragment : Fragment() {
                 }
             }
         }
-        /*binding.edtUsername.editText?.addTextChangedListener {
-            val username = binding.edtUsername
-            val value = username.editText?.text.toString()
-            setError(username, value.isEmpty(), "Username tidak boleh kosong")
-        }*/
 
 
         binding.edtPasswordKonfirm.editText?.addTextChangedListener {
@@ -133,6 +122,9 @@ class NextRegisterFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.loadingIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+        with(binding) {
+            loadingIndicator.isVisible = isLoading
+            binding.btnDaftar.isEnabled = !isLoading
+        }
     }
 }
