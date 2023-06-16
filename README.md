@@ -1,19 +1,19 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/ShaanCoding/ReadME-Generator">
+  <a href="#">
     <img src="https://raw.githubusercontent.com/capstone-bangkit-2023/mobile-app/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" alt="Logo" width="100" height="100">
   </a>
 
   <h3 align="center">Ayo Pintar</h3>
+</p>
 
   <p align="center">
     Smart Quiz Platform
     <br/>
     <br/>
-    <a href="https://github.com/ShaanCoding/ReadME-Generator"><strong>Download Ayo Pintar »</strong></a>
+    <a href="#"><strong>Download Ayo Pintar »</strong></a>
     <br/>
   </p>
-</p>
 
 ![Contributors](https://img.shields.io/github/contributors/capstone-bangkit-2023/mobile-app?color=dark-green)
   ![License](https://img.shields.io/github/license/capstone-bangkit-2023/mobile-app) ![Downloads](https://img.shields.io/github/downloads/capstone-bangkit-2023/mobile-app/total)
@@ -47,7 +47,7 @@
 
 ## About The Project
 
-![Screen Shot](https://lh3.googleusercontent.com/itIQJdohoiqaj0YyPTgX4H5UBjK7zG5AsAhrySFVqrD3kwugVrGZc53tDerwCW_YbCipPQjHHunci05RRU9e413hq5hgh3LCDW2ZgcZMeWprwGTogUXGhFw9A4Zom3q3PVFqLh0HEqU5k3SozjZmxgiPSc0_XASB5a8-fGU9LrF-KBhqdvHtg7X_AU6zI4RO9CsQq46EVbpKy1BXWS_w5vGVRL94GA-swseoRbT29q0kDf7COZQvpVm67NmYoducLRJ6t9oyhsG0XiB6WKYIdPI9EYO_UwXwef4lOyNoP3EVNk1SE4Mr4aspWLnGzmgBZ29zfBGF-BeEhMOk-1Kh13GjVMmjFSHBxcCY-AtBVD5VJZV7Wut4JhNgbz6pXAxKO0FGj0dCaCZcbW6wMwFG-io0cD9dL2jOd98Zcvc7TctOBTo9Ij5dF0OUuEQo9vQyWNWZqsEdVBInid3QA0NeYKdCQYgAv7q_7qDYfpGNc3ddR_mXn0fy5VdRZ8B5OvdgcFv5P_SApQj_RxUkXdDZZa0nbEd_Zl-peuCBqsMNxBFTTxQI-LwdnTPY3jVAV5WKKLEq_YbCCaRcwbe-LIFSrUd9qtDl-fVnvi_n9KkEiDSsa34AncbZvKvVsk7d5QpOoiL7yn-wVHDK4k0bhRToutEH0rPQytKSM76Cf3XBs9lkNQXwGNHY97GTlKCxYLdSJRiCdBqkXIliw46c3Hkk3ITg5ZEGVtsiHyuT7yYjwbwYimhdZZZFwjTxMwQa_Zpjy5U5qHHCpLJsI9MpJlOZ9UfZ2R634NNHSliGto0aWgYyWGZSpvvUcA1z6_a5gBnL4vGCeZx9hfh38y0vnyggy6jVExmAeeiJIshEhYzjJQzGZYhDo7z3p-GbkGfHRs4tpXKmbVNsrsNqPyZBuQE0DoidlONM3NV8m-9yeCVyN4ApVlqCukzn1C5f2gEdDA8AYbChPs9jloE1ZqXOXT5lh1tPekWWoxm9wcPFF502i5-IGI8JPI4EPA=w1470-h827-s-no?authuser=1)
+![Screen Shot](https://photos.app.goo.gl/21jAsGho2dogdFW4A)
 
 Ayo Pintar is a solution from us to increase learning efficiency. Ayo Pintar comes with several features such as
 - AI powered answer check
@@ -65,7 +65,7 @@ Ayo Pintar is a solution from us to increase learning efficiency. Ayo Pintar com
 
 ## Getting Started
 
-To install and Ayo Pintar APP Recommendation app on your Android device, follow these steps:
+To install and use Ayo Pintar App on your Android device, follow these steps:
 
 
 ### Prerequisites

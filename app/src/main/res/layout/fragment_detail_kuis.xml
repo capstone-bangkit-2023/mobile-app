@@ -18,6 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_indicator"
+        android:visibility="gone"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toTopOf="@+id/tv_label_jawab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_no_soal" />
+
     <TextView
         android:id="@+id/tv_timer"
         android:layout_width="wrap_content"
@@ -28,7 +39,6 @@
         android:textStyle="bold"
         android:padding="8dp"
         android:textColor="@color/red_stroke"
-
         app:layout_constraintBottom_toBottomOf="@+id/tv_no_soal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_no_soal" />
@@ -42,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_timer"
         app:layout_constraintStart_toStartOf="@+id/tv_no_soal"
         app:layout_constraintTop_toBottomOf="@+id/tv_no_soal" />
+
 
     <TextView
         android:id="@+id/tv_label_jawab"
@@ -59,7 +70,7 @@
         android:id="@+id/edt_jawaban"
         style="@style/OutlinedBoxWithBorderRadius"
         android:layout_width="match_parent"
-        app:placeholderText="data"
+        app:placeholderText="Tuliskan jawaban anda..."
         android:layout_height="350dp"
 
         android:gravity="start"

@@ -34,4 +34,16 @@ interface ApiService {
 
     @GET("historyNilai")
     fun getRiwayatKuis(@Header("Authorization") token: String, @Query("username") username: String) : Call<GetRiwayatKuisResponse>
+
+    @FormUrlEncoded
+    @POST("sentence")
+    fun postSoal(
+        @Header("Authorization") token: String,
+        @Field("kode_soal") kodeSoal: String,
+        @Field("jawaban") jawaban: String
+    ) : Call<PostJawabanResponse>
+
+    @FormUrlEncoded
+    @POST("profile")
+    fun getprofile(@Header("Authorization") token: String, @Field("username") username: String) : Call<GetProfileResponse>
 }

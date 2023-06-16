@@ -14,10 +14,15 @@ class RegisterViewModel : ViewModel() {
     private val _registerMsg = MutableLiveData<String>()
     val registerMsg: LiveData<String> = _registerMsg
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading : LiveData<Boolean> = _isLoading
+
     fun postRegister(username: String, password: String, confirmPassword: String, nama: String, namaSekolah: String?, email: String) {
+        _isLoading.value = true
         val api = ApiConfig.getApiService().registerApi(username, password, confirmPassword, nama, namaSekolah, email)
         api.enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                _isLoading.value = false
                 if (response.isSuccessful) {
                     if (response.body() != null) {
                         _registerMsg.value = response.body()!!.message
@@ -26,6 +31,7 @@ class RegisterViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                _isLoading.value = false
                 Log.e("postRegister", "onFailure : ${t.message}")
                 _registerMsg.value = t.message
             }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +15,6 @@ import com.example.ayopintar.R
 import com.example.ayopintar.databinding.FragmentNextRegisterBinding
 import com.example.ayopintar.utils.InputValidate
 import com.example.ayopintar.utils.PasswordChecker
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 class NextRegisterFragment : Fragment() {
@@ -43,12 +43,6 @@ class NextRegisterFragment : Fragment() {
             it.findNavController().navigateUp()
         }
 
-        Snackbar.make(
-            binding.root,
-            "Nama: $dataNama, noHp = $dataEmail, sekolah: $dataSekolah",
-            Snackbar.LENGTH_LONG
-        ).show()
-
         val textInputLayouts = listOf(
             Pair(binding.edtUsername, "Username"),
             Pair(binding.edtPassword, "Password"),
@@ -75,8 +69,12 @@ class NextRegisterFragment : Fragment() {
             if (InputValidate.checkTextViewsEmpty(textInputLayouts) && PasswordChecker.checkSimilaritiesPassword(pass1, pass2)) {
                 viewModel.postRegister(username, pass1, pass2, dataNama, dataSekolah, dataEmail)
 
+                viewModel.isLoading.observe(requireActivity()) {
+                    showLoading(it)
+                }
+
                 viewModel.registerMsg.observe(requireActivity()) {
-                    if (it == "Success") {
+                    if (it == "Registrasi berhasil") {
                         Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                         view.findNavController().navigate(R.id.action_nextRegisterFragment_to_loginFragment)
                     } else {
@@ -85,11 +83,6 @@ class NextRegisterFragment : Fragment() {
                 }
             }
         }
-        /*binding.edtUsername.editText?.addTextChangedListener {
-            val username = binding.edtUsername
-            val value = username.editText?.text.toString()
-            setError(username, value.isEmpty(), "Username tidak boleh kosong")
-        }*/
 
 
         binding.edtPasswordKonfirm.editText?.addTextChangedListener {
@@ -123,9 +116,15 @@ class NextRegisterFragment : Fragment() {
 
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        with(binding) {
+            loadingIndicator.isVisible = isLoading
+            binding.btnDaftar.isEnabled = !isLoading
+        }
     }
 }

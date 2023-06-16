@@ -1,4 +1,4 @@
-package com.example.ayopintar.token
+package com.example.ayopintar.datastore.username
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -7,29 +7,29 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class TokenPreference private constructor(private val dataStore: DataStore<Preferences>) {
+class UsernamePreference private constructor(private val dataStore: DataStore<Preferences>) {
 
-    private val TOKEN_KEY = stringPreferencesKey("token")
+    private val USERNAME = stringPreferencesKey("username")
 
-    fun getToken(): Flow<String> {
+    fun getUsername(): Flow<String> {
         return dataStore.data.map {
-            it[TOKEN_KEY] ?: ""
+            it[USERNAME] ?: ""
         }
     }
 
-    suspend fun saveToken(token: String) {
+    suspend fun saveUsername(username: String) {
         dataStore.edit {
-            it[TOKEN_KEY] = token
+            it[USERNAME] = username
         }
     }
 
     companion object {
         @Volatile
-        private var INSTANCE: TokenPreference? = null
+        private var INSTANCE: UsernamePreference? = null
 
-        fun getInstance(dataStore: DataStore<Preferences>): TokenPreference {
+        fun getInstance(dataStore: DataStore<Preferences>): UsernamePreference {
             return INSTANCE ?: synchronized(this) {
-                val instance = TokenPreference(dataStore)
+                val instance = UsernamePreference(dataStore)
                 INSTANCE = instance
                 instance
             }

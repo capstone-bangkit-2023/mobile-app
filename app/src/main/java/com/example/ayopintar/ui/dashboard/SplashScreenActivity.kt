@@ -13,9 +13,9 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.ayopintar.R
-import com.example.ayopintar.token.TokenPreference
-import com.example.ayopintar.token.TokenViewModel
-import com.example.ayopintar.token.TokenViewModelFactory
+import com.example.ayopintar.datastore.token.TokenPreference
+import com.example.ayopintar.datastore.token.TokenViewModel
+import com.example.ayopintar.datastore.token.TokenViewModelFactory
 import com.example.ayopintar.ui.auth.AuthActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")

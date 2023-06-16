@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -17,12 +18,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.ayopintar.R
 import com.example.ayopintar.databinding.FragmentLoginBinding
-import com.example.ayopintar.token.TokenPreference
-import com.example.ayopintar.token.TokenViewModel
-import com.example.ayopintar.token.TokenViewModelFactory
+import com.example.ayopintar.datastore.token.TokenPreference
+import com.example.ayopintar.datastore.token.TokenViewModel
+import com.example.ayopintar.datastore.token.TokenViewModelFactory
+import com.example.ayopintar.datastore.username.UsernamePreference
+import com.example.ayopintar.datastore.username.UsernameViewModel
+import com.example.ayopintar.datastore.username.UsernameViewModelFactory
 import com.example.ayopintar.ui.dashboard.MainActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
+private val Context.dataStore1: DataStore<Preferences> by preferencesDataStore(name = "username")
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -51,6 +56,8 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val pref = TokenPreference.getInstance(requireContext().dataStore)
+        val pref1 = UsernamePreference.getInstance(requireContext().dataStore1)
+        val usernameViewModel = ViewModelProvider(this, UsernameViewModelFactory(pref1))[UsernameViewModel::class.java]
         val tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
         val viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
 
@@ -78,6 +85,10 @@ class LoginFragment : Fragment() {
                 }
             }
 
+            viewModel.isLoading.observe(requireActivity()) {
+                showLoading(it)
+            }
+
             viewModel.loginResult.observe(requireActivity()) {
                 tokenViewModel.saveToken(it.accessToken)
             }
@@ -88,10 +99,19 @@ class LoginFragment : Fragment() {
 
             tokenViewModel.getToken().observe(requireActivity()) {
                 if (it != "") {
+                    usernameViewModel.saveUsername(binding.edtUsername.editText?.text.toString())
                     startActivity(Intent(requireActivity(), MainActivity::class.java))
                     requireActivity().finish()
                 }
             }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        with(binding) {
+            loadingIndicator.isVisible = isLoading
+            binding.btnMasuk.isEnabled = !isLoading
+        }
+
     }
 }

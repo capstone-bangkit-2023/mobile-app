@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.auth.login.LoginFragment">
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:visibility="gone"
+        android:id="@+id/loading_indicator"
+        android:indeterminate="true"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
         android:id="@+id/btn_back"
@@ -159,7 +168,6 @@
             android:layout_height="wrap_content"
             android:text="@string/daftar" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
