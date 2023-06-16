@@ -94,6 +94,13 @@ git clone https://github.com/capstone-bangkit-2023/mobile-app.git
 
 - Select your connected device from the list of available devices, and Android Studio will install and launch the app on your device.
 
+## Features
+- Register/Login
+- Dashboard
+- Profile
+- Quiz
+- Recommendation profession (not implemented yet)
+- Score History (not implemented yet)
 
 ## Usage
 
