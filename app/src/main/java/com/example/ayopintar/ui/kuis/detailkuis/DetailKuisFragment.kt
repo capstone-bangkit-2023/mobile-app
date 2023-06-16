@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -43,16 +45,19 @@ class DetailKuisFragment : Fragment() {
         tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
         viewModel = ViewModelProvider(this)[DetailKuisViewModel::class.java]
 
-        tokenViewModel.getToken().observe(this) {
+        tokenViewModel.getToken().observe(viewLifecycleOwner) {
             viewModel.getSoal(it, idMapel!!)
         }
 
-        viewModel.getSoalResult.observe(this) {
+        viewModel.getSoalResult.observe(viewLifecycleOwner) {
             binding.tvSoal.text = it.soal
+        }
+        viewModel.isLoding.observe(viewLifecycleOwner){
+            showLoading(it)
         }
 
         binding.btnNext.setOnClickListener {
-            viewModel.getSoalResult.observe(this) { soal ->
+            viewModel.getSoalResult.observe(viewLifecycleOwner) { soal ->
                 val kodeSoal = soal.kodeSoal
                 val jawaban = binding.edtJawaban.editText.toString()
                 val toNilaiKuisFragment = DetailKuisFragmentDirections.actionDetailKuisFragmentToNilaiKuisFragment()
@@ -60,6 +65,13 @@ class DetailKuisFragment : Fragment() {
                 toNilaiKuisFragment.jawaban = jawaban
                 view.findNavController().navigate(toNilaiKuisFragment)
             }
+        }
+    }
+    private fun showLoading(isLoading: Boolean){
+        with(binding){
+            progressIndicator.isVisible = isLoading
+            tvSoal.isInvisible = isLoading
+            btnNext.isEnabled = !isLoading
         }
     }
 }

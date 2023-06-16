@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -52,8 +53,9 @@ class HomeFragment : Fragment() {
                 setAdapterSemuaKuis(list)
                 setAdapterPoplerKuis(list)
             }}
-
-
+        viewModel.isLoading.observe(viewLifecycleOwner){
+            showLoading(it)
+        }
     }
 
     private fun setAdapterSemuaKuis(list: List<DataItem?>?) {
@@ -85,31 +87,10 @@ class HomeFragment : Fragment() {
             .putExtra(extraIdMapel, data?.kodeMatapelajaran)
         startActivity(intent)
     }
+    private fun showLoading(isLoading: Boolean){
+        binding.progressIndicator.isVisible = isLoading
+    }
 
-    /*private fun getListMapel(): ArrayList<PelajaranDummyResponse> {
-        val dataMapel = arrayOf("Bahasa Indonesia", "Penjas", "IPA", "IPS", "PKN")
-        val dataPendidikan = arrayOf(
-            "Sekolah Menengah Akhir",
-            "Sekolah Menengah Kejuruan",
-            "Sekolah Menengah Akhir",
-            "Sekolah Menengah Akhir",
-            "Sekolah Menengah Kejuuran"
-        )
-        val dataPhoto = arrayOf(
-            "https://siedoo.com/wp-content/uploads/2020/02/bahasa_indonesia2-1280x720-1-1210x642.jpg",
-            "https://source.unsplash.com/random/900×700/?city",
-            "https://source.unsplash.com/random/900×700/?fruit",
-            "https://source.unsplash.com/random/900×700/?sport",
-            "https://source.unsplash.com/random/900×700/?vegetable"
-        )
-        val listHero = ArrayList<PelajaranDummyResponse>()
-
-        for (i in dataMapel.indices) {
-            val hero = PelajaranDummyResponse(dataMapel[i], dataPendidikan[i], dataPhoto[i])
-            listHero.add(hero)
-        }
-        return listHero
-    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

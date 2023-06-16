@@ -65,7 +65,7 @@ Ayo Pintar is a solution from us to increase learning efficiency. Ayo Pintar com
 
 ## Getting Started
 
-To install and Ayo Pintar APP Recommendation app on your Android device, follow these steps:
+To install and use Ayo Pintar App on your Android device, follow these steps:
 
 
 ### Prerequisites

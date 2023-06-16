@@ -29,12 +29,16 @@ class LoginViewModel : ViewModel() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    if (response.body() != null) {
+                    if (response.code() != 404) {
                         _loginMsg.value = response.body()!!.status
                         _loginResult.value = response.body()!!.data
+                        Log.e("Login","Error: ${response.body()!!.status}")
+                    }else{
+                        _loginMsg.value = response.body()!!.status
                     }
                 }
             }
+
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 _isLoading.value = false
