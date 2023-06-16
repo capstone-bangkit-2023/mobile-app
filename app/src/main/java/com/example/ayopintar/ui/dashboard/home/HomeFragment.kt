@@ -18,11 +18,16 @@ import com.example.ayopintar.databinding.FragmentHomeBinding
 import com.example.ayopintar.datastore.token.TokenPreference
 import com.example.ayopintar.datastore.token.TokenViewModel
 import com.example.ayopintar.datastore.token.TokenViewModelFactory
+import com.example.ayopintar.datastore.username.UsernamePreference
+import com.example.ayopintar.datastore.username.UsernameViewModel
+import com.example.ayopintar.datastore.username.UsernameViewModelFactory
+import com.example.ayopintar.ui.dashboard.profile.ProfileViewModel
 import com.example.ayopintar.ui.kuis.KuisActivity
 import com.example.ayopintar.ui.kuis.KuisActivity.Companion.extraIdMapel
 import com.example.ayopintar.ui.kuis.KuisActivity.Companion.extraMapel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
+private val Context.dataStore1: DataStore<Preferences> by preferencesDataStore(name = "username")
 
 class HomeFragment : Fragment() {
 
@@ -30,7 +35,9 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: HomeViewModel
+    private lateinit var profileViewModel: ProfileViewModel
     private lateinit var tokenViewModel: TokenViewModel
+    private lateinit var usernameViewModel: UsernameViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,15 +51,28 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val pref = TokenPreference.getInstance(requireContext().dataStore)
+        val pref1 = UsernamePreference.getInstance(requireContext().dataStore1)
+        usernameViewModel = ViewModelProvider(this, UsernameViewModelFactory(pref1))[UsernameViewModel::class.java]
+        profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
         viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
 
-        tokenViewModel.getToken().observe(viewLifecycleOwner) {
-            viewModel.getListMapel(it)
+        tokenViewModel.getToken().observe(viewLifecycleOwner) { token ->
+            usernameViewModel.getUsername().observe(this) { username ->
+                profileViewModel.getProfile(token, username)
+            }
+            viewModel.getListMapel(token)
             viewModel.loginResult.observe(viewLifecycleOwner) { list->
                 setAdapterSemuaKuis(list)
                 setAdapterPoplerKuis(list)
-            }}
+            }
+        }
+
+       profileViewModel.profileResult.observe(this) {
+            binding.namaLengkap.text = it.nama
+            binding.sekolah.text = it.namaSekolah
+        }
+
         viewModel.isLoading.observe(viewLifecycleOwner){
             showLoading(it)
         }
