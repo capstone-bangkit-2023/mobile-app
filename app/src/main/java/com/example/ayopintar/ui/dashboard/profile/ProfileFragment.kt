@@ -12,9 +12,9 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.ayopintar.databinding.FragmentProfileBinding
-import com.example.ayopintar.token.TokenPreference
-import com.example.ayopintar.token.TokenViewModel
-import com.example.ayopintar.token.TokenViewModelFactory
+import com.example.ayopintar.datastore.token.TokenPreference
+import com.example.ayopintar.datastore.token.TokenViewModel
+import com.example.ayopintar.datastore.token.TokenViewModelFactory
 import com.example.ayopintar.ui.auth.AuthActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")

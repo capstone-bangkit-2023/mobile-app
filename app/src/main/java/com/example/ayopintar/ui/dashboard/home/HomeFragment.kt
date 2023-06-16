@@ -14,9 +14,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ayopintar.api.response.DataItem
 import com.example.ayopintar.databinding.FragmentHomeBinding
-import com.example.ayopintar.token.TokenPreference
-import com.example.ayopintar.token.TokenViewModel
-import com.example.ayopintar.token.TokenViewModelFactory
+import com.example.ayopintar.datastore.token.TokenPreference
+import com.example.ayopintar.datastore.token.TokenViewModel
+import com.example.ayopintar.datastore.token.TokenViewModelFactory
 import com.example.ayopintar.ui.kuis.KuisActivity
 import com.example.ayopintar.ui.kuis.KuisActivity.Companion.extraIdMapel
 import com.example.ayopintar.ui.kuis.KuisActivity.Companion.extraMapel

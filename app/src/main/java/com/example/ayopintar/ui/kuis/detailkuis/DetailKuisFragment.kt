@@ -12,9 +12,9 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.ayopintar.databinding.FragmentDetailKuisBinding
-import com.example.ayopintar.token.TokenPreference
-import com.example.ayopintar.token.TokenViewModel
-import com.example.ayopintar.token.TokenViewModelFactory
+import com.example.ayopintar.datastore.token.TokenPreference
+import com.example.ayopintar.datastore.token.TokenViewModel
+import com.example.ayopintar.datastore.token.TokenViewModelFactory
 import com.example.ayopintar.ui.kuis.KuisActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")

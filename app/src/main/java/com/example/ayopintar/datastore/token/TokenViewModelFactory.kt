@@ -1,4 +1,4 @@
-package com.example.ayopintar.token
+package com.example.ayopintar.datastore.token
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
