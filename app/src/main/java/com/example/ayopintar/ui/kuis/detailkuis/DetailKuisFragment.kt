@@ -10,6 +10,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.ayopintar.databinding.FragmentDetailKuisBinding
 import com.example.ayopintar.token.TokenPreference
 import com.example.ayopintar.token.TokenViewModel
@@ -47,7 +48,18 @@ class DetailKuisFragment : Fragment() {
         }
 
         viewModel.getSoalResult.observe(this) {
-            binding.tvSoal.text = it
+            binding.tvSoal.text = it.soal
+        }
+
+        binding.btnNext.setOnClickListener {
+            viewModel.getSoalResult.observe(this) { soal ->
+                val kodeSoal = soal.kodeSoal
+                val jawaban = binding.edtJawaban.editText.toString()
+                val toNilaiKuisFragment = DetailKuisFragmentDirections.actionDetailKuisFragmentToNilaiKuisFragment()
+                toNilaiKuisFragment.kodeSoal = kodeSoal
+                toNilaiKuisFragment.jawaban = jawaban
+                view.findNavController().navigate(toNilaiKuisFragment)
+            }
         }
     }
 }
