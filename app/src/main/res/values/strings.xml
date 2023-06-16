@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Ayo Pintar</string>
     <string name="app_mulai_text">Quiz App</string>
     <string name="app_mulai_text1">Ayo mulai untuk belajar!</string>
@@ -31,7 +31,7 @@
     <string name="tooltips_password">Panjang password minimal 8 karakter. Harus mengandung huruf, angka, dan karakter spesial!</string>
     <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="tidak_kosong">%s tidak boleh kosong</string>
-    <string name="kuis_populer">Kuis Populer</string>
+    <string name="kuis_populer" tools:ignore="Typos">Kuis Populer</string>
     <string name="semua_kuis">Semua Kuis</string>
     <string name="profile_settings">Profile Settings</string>
     <string name="nilai_kuis_terbaik">Nilai Kuis Terbaik :</string>
@@ -45,7 +45,7 @@
     <string name="pendidikan">Sekolah menengah atas</string>
     <string name="desc_start_quiz">Terdapat 10 soal kuis dengan bentuk soal essai. Waktu pengerjaan kuis selama 30 menit. Selamat mengerjakan!</string>
     <string name="mulai_kuis">Mulai Kuis</string>
-    <string name="soal_nomor">Soal %s</string>
+    <string name="soal_nomor">Soal</string>
     <string name="soal_sebelumnya">Soal Sebelumnya</string>
     <string name="soal_berikutnya">Soal Berikutnya</string>
     <string name="dummy_timer">30:00</string>
@@ -57,4 +57,8 @@
     <string name="kembali_ke_halaman_utama"><u>Kembali ke halaman utama</u></string>
     <string name="nilaimu">Nilaimu</string>
     <string name="email">Email</string>
+    <string name="per_100">/100</string>
+    <string name="nomor_7">7</string>
+    <string name="nomor_3">3</string>
+    <string name="selesai">Selesai</string>
 </resources>

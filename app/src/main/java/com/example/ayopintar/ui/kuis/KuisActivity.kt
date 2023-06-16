@@ -7,6 +7,7 @@ import com.example.ayopintar.R
 class KuisActivity : AppCompatActivity() {
     companion object {
         const val extraMapel = "EXTRA_MAPEL"
+        const val extraIdMapel = "EXTRA_ID_MAPEL"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
