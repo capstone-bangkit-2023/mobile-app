@@ -11,7 +11,7 @@
     Smart Quiz Platform
     <br/>
     <br/>
-    <a href="#"><strong>Download Ayo Pintar »</strong></a>
+    <a href="https://github.com/capstone-bangkit-2023/mobile-app/releases/tag/0.0.1"><strong>Download Ayo Pintar »</strong></a>
     <br/>
   </p>
 
@@ -47,7 +47,7 @@
 
 ## About The Project
 
-![Screen Shot](https://photos.app.goo.gl/21jAsGho2dogdFW4A)
+![Screen Shot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1eDGvj3ECSM2FXEp_AkHZtjwDomR595-ID6hFXrb7LWSQG2vnAr9Hh2OCfzfYySTKcavfU1gK7ejc09N3QJ3JyRhEv0GTTaKrys94H0DfAaq53Nwgpw8B-GpleMzpAGTgZFPKKAgSfrje4rZsT0yOoywFSVqQQZzkW32JEDOV1AJW5eS3-LHEHAgS/s1600/readme_md.png)
 
 Ayo Pintar is a solution from us to increase learning efficiency. Ayo Pintar comes with several features such as
 - AI powered answer check
