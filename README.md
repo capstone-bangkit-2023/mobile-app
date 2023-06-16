@@ -1,19 +1,19 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/ShaanCoding/ReadME-Generator">
+  <a href="#">
     <img src="https://raw.githubusercontent.com/capstone-bangkit-2023/mobile-app/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" alt="Logo" width="100" height="100">
   </a>
 
   <h3 align="center">Ayo Pintar</h3>
+</p>
 
   <p align="center">
     Smart Quiz Platform
     <br/>
     <br/>
-    <a href="https://github.com/ShaanCoding/ReadME-Generator"><strong>Download Ayo Pintar »</strong></a>
+    <a href="#"><strong>Download Ayo Pintar »</strong></a>
     <br/>
   </p>
-</p>
 
 ![Contributors](https://img.shields.io/github/contributors/capstone-bangkit-2023/mobile-app?color=dark-green)
   ![License](https://img.shields.io/github/license/capstone-bangkit-2023/mobile-app) ![Downloads](https://img.shields.io/github/downloads/capstone-bangkit-2023/mobile-app/total)
